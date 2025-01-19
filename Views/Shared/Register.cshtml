@@ -1,0 +1,40 @@
+﻿@model ccc_projekt.Models.User
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<h2 class="text-center mb-4 text-light">Registration</h2>
+
+<form asp-action="Register" method="post" class="w-50 mx-auto">
+    <div class="mb-3">
+        <label for="Username" class="form-label text-light">Username:</label>
+        <input asp-for="Username" class="form-control bg-dark text-light border-secondary" required />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Password" class="form-label text-light">Password:</label>
+        <input maxlength="30" asp-for="Password" type="password" class="form-control bg-dark text-light border-secondary" required />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label text-light">E-mail:</label>
+        <input asp-for="Email" class="form-control bg-dark text-light border-secondary" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Role" class="form-label text-light">Role</label>
+        <select asp-for="Role" class="form-control bg-dark text-light border-secondary" id="Role" name="Role" required>
+            <option value="">Select a role</option>
+            @foreach (var role in ViewBag.Roles as List<SelectListItem>)
+            {
+                <option value="@role.Value">@role.Text</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-outline-success w-100">Register</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

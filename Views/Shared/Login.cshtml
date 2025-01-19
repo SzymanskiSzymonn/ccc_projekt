@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<h2 class="text-center mb-4 text-light">Login</h2>
+
+<form asp-action="Login" method="post" class="w-50 mx-auto">
+    @if (ViewData.ModelState[""]?.Errors.Any() == true)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState[""].Errors)
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+    <div class="mb-3">
+        <label for="username" class="form-label text-light">Username:</label>
+        <input type="text" id="username" name="username" class="form-control bg-dark text-light border-secondary" required />
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label text-light">Password:</label>
+        <input type="password" id="password" name="password" class="form-control bg-dark text-light border-secondary" required />
+    </div>
+    <button type="submit" class="btn btn-outline-success w-100">Login</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ccc_projekt.Models.Task>
+
+@{
+    ViewData["Title"] = "Tasks";
+    var UserMail = Context.Session.GetString("UserEmail");
+}
+
+<h1 class="text-light">Task list</h1>
+
+<p>
+    @if (Context.Session.GetString("Role") == "Project Manager" || Context.Session.GetString("Role") == "Admin")
+    {
+        <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+    }
+</p>
+
+<table class="table table-dark table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.title)</th>
+            <th>@Html.DisplayNameFor(model => model.AssignedEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.AssignedProject)</th>
+            <th>@Html.DisplayNameFor(model => model.status)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Context.Session.GetString("Role") == "Admin")
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.title)</td>
+                    <td>@item.User?.Email</td>
+                    <td>@item.Project?.name</td>
+                    <td>@Html.DisplayFor(modelItem => item.status)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        @if (Context.Session.GetString("Role") == "Project Manager")
+        {
+            @foreach (var item in Model)
+            {
+                @if (item.Project.maker == UserMail)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.title)</td>
+                        <td>@item.User?.Email</td>
+                        <td>@item.Project?.name</td>
+                        <td>@Html.DisplayFor(modelItem => item.status)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+        @if (Context.Session.GetString("Role") == "User")
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.title)</td>
+                    <td>@item.User?.Email</td>
+                    <td>@item.Project?.name</td>
+                    <td>@Html.DisplayFor(modelItem => item.status)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

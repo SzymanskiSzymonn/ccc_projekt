@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4 text-light">About Us</h1>
+    <p class="lead text-light">We are a team of technology enthusiasts who created the Chaos Control Center platform to make project and task management easier for companies of all sizes. Our goal is to provide tools that allow you to effectively track progress, manage teams and tasks, and achieve success in project delivery.</p>
+    <p class="text-light">Our platform is designed with simplicity, transparency, and functionality in mind, so you can easily adapt it to your organizational needs and requirements.</p>
+    <p class="text-light">Join us and see how easily and effectively you can manage your projects, improving organization and collaboration within your team!</p>
+    <a href="@Url.Action("Functions", "Home")" class="btn btn-outline-primary btn-lg mt-4 custom-button">Learn More About Features</a>
+</div>
+
+<style>
+    .custom-button {
+        border: 2px solid #00bcd4; /* Border color */
+        color: #00bcd4; /* Text color */
+        background-color: transparent; /* Transparent background */
+        transition: all 0.3s ease; /* Smooth animation */
+    }
+
+        .custom-button:hover {
+            background-color: #00bcd4; /* Background color on hover */
+            color: #fff; /* Text color on hover */
+            border-color: #00bcd4; /* Border color on hover */
+        }
+</style>

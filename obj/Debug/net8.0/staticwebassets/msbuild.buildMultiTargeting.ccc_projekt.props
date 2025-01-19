@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ccc_projekt.props" />
+</Project>

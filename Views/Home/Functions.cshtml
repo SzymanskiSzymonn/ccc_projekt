@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Features Page";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4 text-light">Chaos Control Center Features</h1>
+    <p class="lead text-light">Our platform offers a range of features to help you manage projects, tasks, and teams. Each feature is designed with efficiency and ease of use in mind.</p>
+
+    <div class="row mt-4">
+        <!-- Block 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h4 class="card-title">Project Management</h4>
+                    <p class="card-text">Create, organize, and track project progress easily. Manage tasks, deadlines, and resources with a single tool.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h4 class="card-title">Task Management</h4>
+                    <p class="card-text">Assign tasks, set priorities, and track progress. This feature gives you complete control over all tasks in a project.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h4 class="card-title">Team Management</h4>
+                    <p class="card-text">Organize your team efficiently, assign roles, track progress, and improve collaboration within the group. Every team member knows what they need to do.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-outline-primary btn-lg mt-4 custom-button">Back to Homepage</a>
+</div>
+
+<style>
+    .custom-button {
+        border: 2px solid #00bcd4; /* Border color */
+        color: #00bcd4; /* Text color */
+        background-color: transparent; /* Transparent background */
+        transition: all 0.3s ease; /* Smooth animation */
+    }
+
+        .custom-button:hover {
+            background-color: #00bcd4; /* Background color on hover */
+            color: #fff; /* Text color on hover */
+            border-color: #00bcd4; /* Border color on hover */
+        }
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+</style>
